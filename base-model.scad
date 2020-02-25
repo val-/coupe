@@ -22,7 +22,8 @@ module racks() {
 module room() {
 
     translate([0,-BACK_OFFSET,-10]) color("Gray") cube([ROOM_WITH,2000,10]);
-    //translate([0,-50,ROOM_HEIGTH]) color("White") cube([ROOM_WITH,2000,10]);
+    translate([0,-50,ROOM_HEIGTH]) color("White") cube([ROOM_WITH,2000,10]);
+    translate([0,-50,ROOM_HEIGTH-230]) color("White") cube([ROOM_WITH,110,230]);
     translate([-10,-BACK_OFFSET,0]) color("Teal") cube([10,2000,ROOM_HEIGTH]);
     translate([ROOM_WITH,-BACK_OFFSET,0]) color("WhiteSmoke") cube([10,2000,ROOM_HEIGTH]);
 
@@ -40,7 +41,7 @@ module sheet(length, width, thickness, edging) {
     if (edging[2]) color("White") cube([length, 0.5, thickness]);
     if (edging[3]) translate([0,width-0.5,0]) color("White") cube([length, 0.5, thickness]);
         
-    translate([10,10,thickness]) rotate([0,0,0]) #text(str(length, " x ", width, " x ", thickness), size=10);
+    translate([10,10,thickness]) rotate([0,0,0]) #text(str(length, " x ", width, " x ", thickness), size=30);
     
 }
 
