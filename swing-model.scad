@@ -23,7 +23,7 @@ container_3();
 boxes();
 
 module pedestal() {
-    translate([0,-BACK_OFFSET,100]) rotate([0,0,0]) sheet(ROOM_WITH, COUPE_DEPTH+BACK_OFFSET, 16, [true, true, true, true]);
+    translate([0,-BACK_OFFSET,100]) rotate([0,0,0]) sheet(ROOM_WITH, COUPE_DEPTH+BACK_OFFSET, 16, [true, true, 0, true]);
     translate([0,COUPE_DEPTH-40,0]) rotate([90,0,0]) sheet(ROOM_WITH, 100, 16, [true, true, true, true]);
 }
 
@@ -32,8 +32,9 @@ module container_1() {
         //#cube([970, COUPE_DEPTH, ROOM_HEIGTH]);
         hinges();
         translate([0,10,2050]) sheet(970, COUPE_DEPTH+BACK_OFFSET, 25, [true, true, true, 0]);
-        translate([0,10,Z_OFFSET+200]) sheet(970, COUPE_DEPTH+BACK_OFFSET, 25, [true, true, true, 0]);
-        translate([0,10,Z_OFFSET+200+25+200]) sheet(970, COUPE_DEPTH+BACK_OFFSET, 25, [true, true, true, 0]);
+        translate([0,10,Z_OFFSET+200]) sheet(970, COUPE_DEPTH+BACK_OFFSET, 16, [true, true, true, 0]);
+        translate([0,10,Z_OFFSET+200+16+200]) sheet(970, COUPE_DEPTH+BACK_OFFSET, 25, [true, true, true, 0]);
+        translate([16+477,10,Z_OFFSET]) rotate([0,-90,0]) sheet(200, COUPE_DEPTH+BACK_OFFSET-10, 16, [true, true, true, 0]);
     }
 }
 
@@ -81,7 +82,7 @@ module container_3() {
         translate([0,10,2050-330]) sheet(970, COUPE_DEPTH+BACK_OFFSET-10, 25, [true, true, true, 0]);
 
         //#translate([0, 0, Z_OFFSET]) cube([260,260,1300]);
-        #translate([276, 0, Z_OFFSET]) cube([110,500,1600]);
+        //#translate([276, 0, Z_OFFSET]) cube([110,500,1600]);
 
         translate([16+260,10,Z_OFFSET]) rotate([0,-90,0]) sheet(2050-330-Z_OFFSET, COUPE_DEPTH+BACK_OFFSET-10, 16, [true, true, true, 0]);
         translate([16+260+110+16,10,Z_OFFSET]) rotate([0,-90,0]) sheet(2050-330-Z_OFFSET, COUPE_DEPTH+BACK_OFFSET-10, 16, [true, true, true, 0]);
@@ -182,22 +183,11 @@ module boxes() {
         translate([2030, 0,Z_OFFSET+180+20+16+180+20+16]) stuk_3();
         translate([2030+200+10, 0,Z_OFFSET+180+20+16+180+20+16+16+300]) stuk_2();
         translate([2030, 0,Z_OFFSET+180+20+16+180+20+16+16+300]) stuk_3();
-        //translate([2240, 0,120]) stuk_1();
-        /*
-        translate([40 + 240*1, 150,RACK_HEIGHT+30]) cube([220, 340, 160]);
-        translate([40 + 240*2, 150,RACK_HEIGHT+30]) cube([220, 340, 160]);
-        translate([40 + 240*3, 150,RACK_HEIGHT+30]) cube([220, 340, 160]);
-        translate([40 + 240*4, 150,RACK_HEIGHT+30]) cube([220, 340, 160]);
-        translate([40 + 240*5, 150,RACK_HEIGHT+30]) cube([220, 340, 160]);
-        translate([40 + 240*6, 150,RACK_HEIGHT+30]) cube([220, 340, 160]);
-        translate([30, -20, 0]) cube([690,550,190]);
-        translate([30, -20, 210+16]) cube([690,550,190]);
 
-        translate([1530, -20, 0]) cube([690,550,190]);
+        translate([45, -20,Z_OFFSET+200+16]) skub_1();
+        translate([45, -20,Z_OFFSET]) skub_2();
+        translate([515, -20,Z_OFFSET]) skub_2();
 
-        translate([2750, -20, 20]) cube([260,260,1300]);
-        translate([2585, -20, 20]) cube([110,500,1700]);
-        */
     }
 
 }
@@ -215,6 +205,16 @@ module stuk_2() {
 module stuk_3() {
     // id 203.642.35
     cube([200,510,180]);
+}
+
+module skub_1() {
+    // id 603.751.14
+    cube([930,550,190]);
+}
+
+module skub_2() {
+    // id 403.750.92
+    cube([440,550,190]);
 }
 
 module sheet(length, width, thickness, edging) {
