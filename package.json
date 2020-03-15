@@ -1,0 +1,24 @@
+{
+  "name": "coupe",
+  "version": "1.0.0",
+  "description": "Excel spec generator",
+  "main": "index.js",
+  "scripts": {
+    "start": "node index.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/val-/coupe.git"
+  },
+  "author": "Valentin Agafonov",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/val-/coupe/issues"
+  },
+  "homepage": "https://github.com/val-/coupe#readme",
+  "devDependencies": {
+    "json2xls": "^0.1.2",
+    "sh": "0.0.3"
+  }
+}
