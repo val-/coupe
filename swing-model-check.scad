@@ -7,11 +7,11 @@ COUPE_DEPTH = 550;
 
 asmpad = 0;
 dpad = 0;
-dangle = 90;
+dangle = 0;
 
 
-translate([1500,1500,0]) toolbox();
-translate([1500,2500,0]) toolbox2();
+//translate([1500,1500,0]) toolbox();
+//translate([1500,2500,0]) toolbox2();
 
 
 difference() {
@@ -31,7 +31,7 @@ color("Red") scale([1,-1,1]) {
 module all() {
     //room();
 
-    racks();
+    //racks();
     //doors();
     pedestal();
 
@@ -39,28 +39,26 @@ module all() {
     container_2();
     container_3();
 
-    boxes();
-
 }
 
 module pedestal() {
-    translate([1,-BACK_OFFSET,100]) rotate([0,0,0]) sheet(1000, COUPE_DEPTH+BACK_OFFSET, 16, [true, true, 0, true]);
-    translate([1001,-BACK_OFFSET,100]) rotate([0,0,0]) sheet(1001, COUPE_DEPTH+BACK_OFFSET, 16, [true, true, 0, true]);
-    translate([2002,-BACK_OFFSET,100]) rotate([0,0,0]) sheet(1000, COUPE_DEPTH+BACK_OFFSET, 16, [true, true, 0, true]);
-    translate([1,COUPE_DEPTH-40,0]) rotate([90,0,0]) sheet(1500, 98, 16, [true, true, true, true]);
-    translate([1502,COUPE_DEPTH-40,0]) rotate([90,0,0]) sheet(1500, 98, 16, [true, true, true, true]);
-    translate([1,-15,0]) pedestal_box();
-    translate([1000,-15,0]) pedestal_box();
-    translate([2000,-15,0]) pedestal_box();
+    //translate([1,-BACK_OFFSET,100]) rotate([0,0,0]) sheet(1000, COUPE_DEPTH+BACK_OFFSET, 16, [true, true, 0, true]);
+    //translate([1001,-BACK_OFFSET,100]) rotate([0,0,0]) sheet(1001, COUPE_DEPTH+BACK_OFFSET, 16, [true, true, 0, true]);
+    //translate([2002,-BACK_OFFSET,100]) rotate([0,0,0]) sheet(1000, COUPE_DEPTH+BACK_OFFSET, 16, [true, true, 0, true]);
+    //translate([1,COUPE_DEPTH-40,0]) rotate([90,0,0]) sheet(1500, 98, 16, [true, true, true, true]);
+    //translate([1502,COUPE_DEPTH-40,0]) rotate([90,0,0]) sheet(1500, 98, 16, [true, true, true, true]);
+    //translate([1,-15,0]) pedestal_box();
+    //translate([1000,-15,0]) pedestal_box();
+    //translate([2000,-15,0]) pedestal_box();
 }
 
 module container_1() {
     translate([969+16,COUPE_DEPTH,0]) rotate([0,0,180]) {
         //#cube([969, COUPE_DEPTH, ROOM_HEIGTH]);
         hinges();
-        translate([0,0,ROOM_HEIGTH-25]) sheet(969, 60, 25, [true, true, true, true]);
-        translate([0,10,2050]) sheet(969, COUPE_DEPTH+BACK_OFFSET, 25, [true, true, true, 0]);
-        translate([0,10,Z_OFFSET+350]) sheet(969, COUPE_DEPTH+BACK_OFFSET, 25, [true, true, true, 0]);
+        //translate([0,0,ROOM_HEIGTH-25]) sheet(969, 60, 25, [true, true, true, true]);
+        //translate([0,10,2050]) sheet(969, COUPE_DEPTH+BACK_OFFSET, 25, [true, true, true, 0]);
+        //translate([0,10,Z_OFFSET+350]) sheet(969, COUPE_DEPTH+BACK_OFFSET, 25, [true, true, true, 0]);
         commode1();
     }
 }
@@ -68,24 +66,28 @@ module container_1() {
 module commode1() {
 
     // Верхушка
-    translate([0,10,Z_OFFSET+801]) sheet(493, COUPE_DEPTH+BACK_OFFSET-10, 16, [true, true, true, 0]);
+    //translate([0,10,Z_OFFSET+801]) sheet(493, COUPE_DEPTH+BACK_OFFSET-10, 16, [true, true, true, 0]);
 
     //Боковина
-    translate([16,10,Z_OFFSET+350+25]) rotate([0,-90,0]) sheet(801-350-25, COUPE_DEPTH-10, 16, [1, 1, 1, 1]);
+    //translate([16,10,Z_OFFSET+350+25]) rotate([0,-90,0]) sheet(801-350-25, COUPE_DEPTH-10, 16, [1, 1, 1, 1]);
 
     //Центральная стойка
-    translate([(970+16)/2,10,Z_OFFSET+350+25]) rotate([0,-90,0]) sheet(801-350-25, COUPE_DEPTH+BACK_OFFSET-10, 16, [1, 1, 1, 0]);
+    //translate([(970+16)/2,10,Z_OFFSET+350+25]) rotate([0,-90,0]) sheet(801-350-25, COUPE_DEPTH+BACK_OFFSET-10, 16, [1, 1, 1, 0]);
 
     // Фасады
     face_width = 493-16-16-2-2;
     comode_z_base = Z_OFFSET + 350 + 25;
+    /*
     translate([16+2,10+16-dpad*30, comode_z_base+2]) rotate([90,0,0]) sheet(face_width, 180, 16, [true, true, true, true], "V");
     translate([16+2,10+16-dpad*20, comode_z_base+2+180+32]) rotate([90,0,0]) sheet(face_width, 180, 16, [true, true, true, true], "V");
+    */
 
     //Ящики
     box_width = (970 - 16*2 - 4*4 - 16)/2;
+    /*
     translate([16+4,16+10-dpad*30, comode_z_base+20]) box(180-20-30, 550, box_width, asmpad);
     translate([16+4,16+10-dpad*20, comode_z_base+20+180+32]) box(180-20-30, 550, box_width, asmpad);
+    */
 
 }
 
@@ -93,43 +95,47 @@ module container_2() {
     translate([969+16+32+969,COUPE_DEPTH,0]) rotate([0,0,180]) {
         //#cube([969, COUPE_DEPTH, ROOM_HEIGTH]);
         hinges();
-        translate([0,0,ROOM_HEIGTH-25]) sheet(969, 60, 25, [true, true, true, true]);
-        translate([0,10,2050]) sheet(969, COUPE_DEPTH+BACK_OFFSET, 25, [true, true, true, 0]);
+        //translate([0,0,ROOM_HEIGTH-25]) sheet(969, 60, 25, [true, true, true, true]);
+        //translate([0,10,2050]) sheet(969, COUPE_DEPTH+BACK_OFFSET, 25, [true, true, true, 0]);
         commode2();
     }
 }
 
 module commode2() {
 
-    translate([0,10,Z_OFFSET+200]) sheet(969, COUPE_DEPTH-10, 16, [1, 1, 1, 1]);
-    translate([(969+25)/2,10,Z_OFFSET]) rotate([0,-90,0]) sheet(200, COUPE_DEPTH-10, 25, [1, 1, 1, 1]);
+    //translate([0,10,Z_OFFSET+200]) sheet(969, COUPE_DEPTH-10, 16, [1, 1, 1, 1]);
+    //translate([(969+25)/2,10,Z_OFFSET]) rotate([0,-90,0]) sheet(200, COUPE_DEPTH-10, 25, [1, 1, 1, 1]);
 
     // Верхушка
-    translate([0,10,Z_OFFSET+800]) sheet(969, COUPE_DEPTH+BACK_OFFSET, 16, [true, true, true, 0]);
+    //translate([0,10,Z_OFFSET+800]) sheet(969, COUPE_DEPTH+BACK_OFFSET, 16, [true, true, true, 0]);
     //translate([0,65-16+25,Z_OFFSET+800+25]) rotate([90,0,0]) sheet(969, 80, 25, [true, true, true, true]);
 
     //Боковина
-    translate([16,10,Z_OFFSET+200+16]) rotate([0,-90,0]) sheet(800-200-16, COUPE_DEPTH-10, 16, [1, 1, 1, 1]);
-    translate([969,10,Z_OFFSET+200+16]) rotate([0,-90,0]) sheet(800-200-16, COUPE_DEPTH-10, 16, [1, 1, 1, 1]);
+    //translate([16,10,Z_OFFSET+200+16]) rotate([0,-90,0]) sheet(800-200-16, COUPE_DEPTH-10, 16, [1, 1, 1, 1]);
+    //translate([969,10,Z_OFFSET+200+16]) rotate([0,-90,0]) sheet(800-200-16, COUPE_DEPTH-10, 16, [1, 1, 1, 1]);
 
     //Центральная стойка
-    translate([(969+25)/2,10,Z_OFFSET+200+16]) rotate([0,-90,0]) sheet(800-200-16, COUPE_DEPTH-10, 25, [1, 1, 1, 1]);
+    //translate([(969+25)/2,10,Z_OFFSET+200+16]) rotate([0,-90,0]) sheet(800-200-16, COUPE_DEPTH-10, 25, [1, 1, 1, 1]);
 
 
     // Фасады
     face_width = (969 - 16*2 - 2*4 - 25)/2;
     comode_z_base = Z_OFFSET + 200 + 16;
+    /*
     translate([16+2,10+16-dpad*30, comode_z_base+2]) rotate([90,0,0]) sheet(face_width, 300, 16, [true, true, true, true], "V");
     translate([16+2,10+16-dpad*20, comode_z_base+2+300+32]) rotate([90,0,0]) sheet(face_width, 218, 16, [true, true, true, true], "V");
     translate([16+2+face_width+2+25+2,10+16-dpad*30, comode_z_base+2]) rotate([90,0,0]) sheet(face_width, 300, 16, [true, true, true, true], "V");
     translate([16+2+face_width+2+25+2,10+16-dpad*20, comode_z_base+2+300+32]) rotate([90,0,0]) sheet(face_width, 218, 16, [true, true, true, true], "V");
+    */
 
     //Ящики
     box_width = (969 - 16*2 - 4*4 - 25)/2;
+    /*
     translate([16+4,16+10-dpad*30, comode_z_base+20]) box(300-20-30, 550, box_width, asmpad);
     translate([16+4,16+10-dpad*20, comode_z_base+20+300+32]) box(218-20-30, 550, box_width, asmpad);
     translate([16+4+box_width+4+25+4,16+10-dpad*30, comode_z_base+20]) box(300-20-30, 550, box_width, asmpad);
     translate([16+4+box_width+4+25+4,16+10-dpad*20, comode_z_base+20+300+32]) box(218-20-30, 550, box_width, asmpad);
+    */
 
 }
 
@@ -137,33 +143,34 @@ module container_3() {
     translate([969+16+32+969+32+969,COUPE_DEPTH,0]) rotate([0,0,180]) {
         //#cube([969, COUPE_DEPTH, ROOM_HEIGTH]);
         hinges();
-        translate([0,0,ROOM_HEIGTH-25]) sheet(969, 60, 25, [true, true, true, true]);
-        translate([0,10,2050]) sheet(969, COUPE_DEPTH+BACK_OFFSET, 25, [true, true, true, 0]);
-        translate([0,10,2050-330]) sheet(969, COUPE_DEPTH+BACK_OFFSET, 16, [true, true, true, 0]);
+        //translate([0,0,ROOM_HEIGTH-25]) sheet(969, 60, 25, [true, true, true, true]);
+        //translate([0,10,2050]) sheet(969, COUPE_DEPTH+BACK_OFFSET, 25, [true, true, true, 0]);
+        //translate([0,10,2050-330]) sheet(969, COUPE_DEPTH+BACK_OFFSET, 16, [true, true, true, 0]);
 
         //#translate([0, 0, Z_OFFSET]) cube([265,260,1300]);
         //#translate([265+16, 0, Z_OFFSET]) cube([105,500,1600]);
 
-        translate([16+264,10,Z_OFFSET]) rotate([0,-90,0]) sheet(2050-330-Z_OFFSET, COUPE_DEPTH+BACK_OFFSET-10, 16, [true, true, true, 0]);
-        translate([16+264+105+16,10,Z_OFFSET]) rotate([0,-90,0]) sheet(2050-330-Z_OFFSET, COUPE_DEPTH+BACK_OFFSET-10, 16, [true, true, true, 0]);
+        //translate([16+264,10,Z_OFFSET]) rotate([0,-90,0]) sheet(2050-330-Z_OFFSET, COUPE_DEPTH+BACK_OFFSET-10, 16, [true, true, true, 0]);
+        //translate([16+264+105+16,10,Z_OFFSET]) rotate([0,-90,0]) sheet(2050-330-Z_OFFSET, COUPE_DEPTH+BACK_OFFSET-10, 16, [true, true, true, 0]);
 
-        translate([265+16+105,400,Z_OFFSET]) rotate([90,-90,0]) sheet(400, 105, 16, [true, true, true, true]);
+        //translate([265+16+105,400,Z_OFFSET]) rotate([90,-90,0]) sheet(400, 105, 16, [true, true, true, true]);
 
-        translate([0,10+260,400 + 350*0]) sheet(263, 306, 16, [true, true, true, true]);
-        translate([0,10+260,400 + 350*1]) sheet(263, 306, 16, [true, true, true, true]);
-        translate([0,10+260,400 + 350*2]) sheet(263, 303, 16, [true, true, true, true]);
-        translate([0,10+260,400 + 350*3]) sheet(263, 301, 16, [true, true, true, true]);
-        translate([0,10+260+16,1116]) rotate([90,0,0]) sheet(263, 200, 16, [true, true, true, true]);
+        //translate([0,10+260,400 + 350*0]) sheet(263, 306, 16, [true, true, true, true]);
+        //translate([0,10+260,400 + 350*1]) sheet(263, 306, 16, [true, true, true, true]);
+        //translate([0,10+260,400 + 350*2]) sheet(263, 303, 16, [true, true, true, true]);
+        //translate([0,10+260,400 + 350*3]) sheet(263, 301, 16, [true, true, true, true]);
+        //translate([0,10+260+16,1116]) rotate([90,0,0]) sheet(263, 200, 16, [true, true, true, true]);
 
         // Полки правые
+        /*
         translate([16+264+105+16,10,Z_OFFSET + 180 + 20]) sheet(568, COUPE_DEPTH+BACK_OFFSET-10, 16, [true, true, true, 0]);
         translate([16+264+105+16,10,Z_OFFSET + 180*2 + 20*2 +16]) sheet(568, COUPE_DEPTH+BACK_OFFSET-10, 16, [true, true, true, 0]);
         translate([16+264+105+16,10,Z_OFFSET + 180*2 + 20*2 +16*2+300]) sheet(568, COUPE_DEPTH+BACK_OFFSET-10, 16, [true, true, true, 0]);
         translate([16+264+105+16,10,Z_OFFSET + 180*2 + 20*2 +16*3+300*2]) sheet(568, COUPE_DEPTH+BACK_OFFSET-10, 16, [true, true, true, 0]);
         translate([16+264+105+16,10,Z_OFFSET + 180*2 + 20*2 +16*4+300*2+262]) sheet(568, COUPE_DEPTH+BACK_OFFSET-10, 16, [true, true, true, 0]);
-
-        translate([16+264+105+16+270,10,Z_OFFSET + 180*2 + 20*2 +16*4+300*2]) rotate([0,-90,0]) sheet(262, COUPE_DEPTH+BACK_OFFSET-10, 16, [true, true, true, 0]);
-        translate([16+264+105+16+270,10,Z_OFFSET + 180*2 + 20*2 +16*4+300*2+16+262]) rotate([0,-90,0]) sheet(262, COUPE_DEPTH+BACK_OFFSET-10, 16, [true, true, true, 0]);
+        */
+        //translate([16+264+105+16+270,10,Z_OFFSET + 180*2 + 20*2 +16*4+300*2]) rotate([0,-90,0]) sheet(262, COUPE_DEPTH+BACK_OFFSET-10, 16, [true, true, true, 0]);
+        //translate([16+264+105+16+270,10,Z_OFFSET + 180*2 + 20*2 +16*4+300*2+16+262]) rotate([0,-90,0]) sheet(262, COUPE_DEPTH+BACK_OFFSET-10, 16, [true, true, true, 0]);
 
     }
 }
@@ -324,7 +331,7 @@ module sheet(length, width, thickness, edging, edging_letter="L") {
         edging[3] ? edging_letter : ""
     );
 
-    echo(str(saw_length, "_", saw_width, "_", thickness, "_", edging_string_length, "_", edging_string_width));
+    //echo(str(saw_length, "_", saw_width, "_", thickness, "_", edging_string_length, "_", edging_string_width));
     
 }
 
